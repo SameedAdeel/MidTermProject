@@ -11,11 +11,13 @@ package driver.java;
  */
 public class AddAdvisor extends javax.swing.JFrame {
 
+    private Advisor ad;
     /**
      * Creates new form AddAdvisor
      */
     public AddAdvisor() {
         initComponents();
+        this.ad=new Advisor();
     }
 
     /**
@@ -59,6 +61,11 @@ public class AddAdvisor extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton1.setText("Add");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -113,6 +120,18 @@ public class AddAdvisor extends javax.swing.JFrame {
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        ad.setName(jTextField1.getText());
+        ad.setCNIC(jTextField2.getText());
+        ad.setEmail(jTextField3.getText());
+        ad.setDegree(jTextField4.getText());
+        Administration.getIsntance().AddAdvisor(ad);
+        MenuForm f=new MenuForm();
+        f.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

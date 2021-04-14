@@ -17,6 +17,9 @@ public class DriverJava {
     public static void main(String[] args) {
         // TODO code application logic here
         System.out.print("Hello");
+        
+        LoginForm f=new LoginForm();
+        f.setVisible(true);
     }
     
 }
