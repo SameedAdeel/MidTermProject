@@ -11,11 +11,15 @@ package driver.java;
  */
 public class UpdateStudent extends javax.swing.JFrame {
 
+    public String reg;
     /**
      * Creates new form UpdateStudent
      */
-    public UpdateStudent() {
+    public UpdateStudent(String reg) {
         initComponents();
+        this.reg=reg;
+        jTextField2.setText(reg);
+        jTextField2.setEnabled(false);
     }
 
     /**
@@ -50,6 +54,11 @@ public class UpdateStudent extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton1.setText("Update");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel5.setText("Name");
@@ -108,6 +117,14 @@ public class UpdateStudent extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Administration.getIsntance().UpdateStudent(jTextField2.getText(),jTextField4.getText(),jTextField1.getText(),jTextField3.getText());
+        MenuForm f=new MenuForm();
+        f.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -136,11 +153,7 @@ public class UpdateStudent extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new UpdateStudent().setVisible(true);
-            }
-        });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

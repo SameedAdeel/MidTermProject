@@ -11,11 +11,14 @@ package driver.java;
  */
 public class AddStudent extends javax.swing.JFrame {
 
+    private Student s;
     /**
+     * 
      * Creates new form AddStudent
      */
     public AddStudent() {
         initComponents();
+        this.s=new Student();
     }
 
     /**
@@ -53,6 +56,11 @@ public class AddStudent extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton1.setText("Add");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel5.setText("Name");
@@ -114,6 +122,18 @@ public class AddStudent extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+       s.setName(jTextField1.getText());
+       s.SetReg(jTextField2.getText());
+       s.setEmail(jTextField3.getText());
+       s.SetProject(jTextField4.getText());
+       Administration.getIsntance().AddStudent(s);
+       MenuForm f=new MenuForm();
+       f.setVisible(true);
+       this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
