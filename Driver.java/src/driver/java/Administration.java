@@ -172,7 +172,7 @@ public class Administration {
     {
         try{
             FileWriter fw =new FileWriter("Student.txt");
-            BufferedWriter bw = new BufferedWriter(fw);
+          //  BufferedWriter bw = new BufferedWriter(fw);
             
             for(int i=0;i<pro.size();i++)
             {
@@ -185,6 +185,8 @@ public class Administration {
                     }
                 }   
             }
+        fw.flush();
+        fw.close();
         }
         catch(Exception ex)
         {
@@ -195,7 +197,7 @@ public class Administration {
     {
         try{
             FileWriter fw =new FileWriter("Student.csv");
-            BufferedWriter bw = new BufferedWriter(fw);
+         //   BufferedWriter bw = new BufferedWriter(fw);
             
             for(int i=0;i<pro.size();i++)
             {
@@ -208,6 +210,8 @@ public class Administration {
                     }
                 }   
             }
+            fw.flush();
+            fw.close();
         }
         catch(Exception ex)
         {
