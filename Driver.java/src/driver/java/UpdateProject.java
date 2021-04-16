@@ -11,11 +11,15 @@ package driver.java;
  */
 public class UpdateProject extends javax.swing.JFrame {
 
+    public String p;
     /**
      * Creates new form UpdateProject
      */
-    public UpdateProject() {
+    public UpdateProject(String pro) {
         initComponents();
+        this.p=pro;
+        jTextField1.setText(p);
+        jTextField1.setEnabled(false);
     }
 
     /**
@@ -119,6 +123,11 @@ public class UpdateProject extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
+        Administration.getIsntance().UpdateProject(jTextField1.getText(),jTextArea1.getText(),jComboBox1.getSelectedItem().toString());
+        MenuForm f=new MenuForm();
+        f.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -149,11 +158,7 @@ public class UpdateProject extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new UpdateProject().setVisible(true);
-            }
-        });
+       
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

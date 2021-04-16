@@ -11,11 +11,13 @@ package driver.java;
  */
 public class AddProject extends javax.swing.JFrame {
 
+    private Project s; 
     /**
      * Creates new form AddProject
      */
-    public AddProject() {
+    public AddProject(Advisor a) {
         initComponents();
+        this.s=new Project(a);
     }
 
     /**
@@ -56,6 +58,11 @@ public class AddProject extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton1.setText("Add");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -109,6 +116,17 @@ public class AddProject extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        s.setTitle(jTextField1.getText());
+        s.setType(jComboBox1.getSelectedItem().toString());
+        s.setDes(jTextArea1.getText());
+        Administration.getIsntance().AddProject(s);
+        MenuForm f=new MenuForm();
+        f.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -137,11 +155,7 @@ public class AddProject extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AddProject().setVisible(true);
-            }
-        });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

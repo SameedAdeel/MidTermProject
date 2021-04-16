@@ -5,6 +5,8 @@
  */
 package driver.java;
 import java.util.*;
+import javax.swing.JOptionPane;
+import java.io.*;
 /**
  *
  * @author HP
@@ -12,13 +14,15 @@ import java.util.*;
 public class Administration {
     
     private static Administration instance;
-    
+    private int a=1;
     private List<Advisor> ad ;
     private List<Student> st;
+    private List<Project> pro;
     
     private Administration(){
         ad=new ArrayList<Advisor>();
         st=new ArrayList<Student>();
+        pro=new ArrayList<Project>();
     }
     public static Administration getIsntance(){
         if(instance==null)
@@ -108,4 +112,107 @@ public class Administration {
     {
         return st;
     }
+     public void AddProject(Project p)
+    {
+        pro.add(p);
+    }
+    
+     private int searchProject(String title)
+    {
+        int index = -1;
+         for(int i = 0 ; i  < st.size(); i++)
+         {
+             if(pro.get(i).getTitle().equals(title))
+             {
+                 index = i;
+                 break;
+             }
+         }
+         
+        return index;
+    }
+     public boolean deleteProject(String t){
+       int index = searchProject(t);
+       
+       if(index == -1)
+           return false;
+       else {
+           pro.remove(index);
+           return true;
+       }
+    }
+    public boolean UpdateProject(String title,String des,String type)
+    {
+        int index = searchStudent(title);
+       
+       if(index == -1)
+           return false;
+       else {
+           pro.get(index).setDes(des);
+           pro.get(index).setType(type);
+           return true;
+       }
+    }
+    public List<Project> getProjects()
+    {
+        return pro;
+    }
+    
+    
+    public void ViewProject()
+    {
+        for(int i=0;i<pro.size();i++)
+        {
+            JOptionPane.showMessageDialog(null,"Select the following projects :\n "+pro.get(i).getTitle());
+            
+        }
+    } 
+    
+    public void Save()
+    {
+        try{
+            FileWriter fw =new FileWriter("Student.txt");
+            BufferedWriter bw = new BufferedWriter(fw);
+            
+            for(int i=0;i<pro.size();i++)
+            {
+                bw.write("Group: "+(a++) + "\t\tAdvisor : "+ pro.get(i).getAdvisor().getName()+"\n");
+                for(int j=0;j<st.size();j++)
+                {
+                    if(st.get(j).getProject().equals(pro.get(i).getTitle()))
+                    {
+                        bw.write(st.get(j).getReg());
+                    }
+                }   
+            }
+        }
+        catch(Exception ex)
+        {
+            
+        }
+    }
+    public void SaveData()
+    {
+        try{
+            FileWriter fw =new FileWriter("Student.csv");
+            BufferedWriter bw = new BufferedWriter(fw);
+            
+            for(int i=0;i<pro.size();i++)
+            {
+                bw.write("Group: "+(a++) + "\t\tAdvisor : "+ pro.get(i).getAdvisor().getName()+"\n");
+                for(int j=0;j<st.size();j++)
+                {
+                    if(st.get(j).getProject().equals(pro.get(i).getTitle()))
+                    {
+                        bw.write(st.get(j).getReg());
+                    }
+                }   
+            }
+        }
+        catch(Exception ex)
+        {
+            
+        }
+    }
+        
 }

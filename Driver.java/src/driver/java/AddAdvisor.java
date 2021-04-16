@@ -128,7 +128,7 @@ public class AddAdvisor extends javax.swing.JFrame {
         ad.setEmail(jTextField3.getText());
         ad.setDegree(jTextField4.getText());
         Administration.getIsntance().AddAdvisor(ad);
-        MenuForm f=new MenuForm();
+        MenuForm f=new MenuForm(ad);
         f.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
