@@ -120,7 +120,7 @@ public class Administration {
      private int searchProject(String title)
     {
         int index = -1;
-         for(int i = 0 ; i  < st.size(); i++)
+         for(int i = 0 ; i  < pro.size(); i++)
          {
              if(pro.get(i).getTitle().equals(title))
              {
@@ -176,12 +176,12 @@ public class Administration {
             
             for(int i=0;i<pro.size();i++)
             {
-                bw.write("Group: "+(a++) + "\t\tAdvisor : "+ pro.get(i).getAdvisor().getName()+"\n");
+                fw.write("Group: "+(a++) + "\t\tAdvisor : "+ pro.get(i).getAdvisor().getName()+"\n");
                 for(int j=0;j<st.size();j++)
                 {
                     if(st.get(j).getProject().equals(pro.get(i).getTitle()))
                     {
-                        bw.write(st.get(j).getReg());
+                        fw.write(st.get(j).getReg());
                     }
                 }   
             }
@@ -199,12 +199,12 @@ public class Administration {
             
             for(int i=0;i<pro.size();i++)
             {
-                bw.write("Group: "+(a++) + "\t\tAdvisor : "+ pro.get(i).getAdvisor().getName()+"\n");
+                fw.write("Group: "+(a++) + "\t\tAdvisor : "+ pro.get(i).getAdvisor().getName()+"\n");
                 for(int j=0;j<st.size();j++)
                 {
                     if(st.get(j).getProject().equals(pro.get(i).getTitle()))
                     {
-                        bw.write(st.get(j).getReg());
+                        fw.write(st.get(j).getReg());
                     }
                 }   
             }

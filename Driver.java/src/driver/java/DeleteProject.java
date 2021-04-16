@@ -77,7 +77,11 @@ public class DeleteProject extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Administration.getIsntance().deleteProject(jTextField1.getText());
+        
+        if(Administration.getIsntance().deleteProject(jTextField1.getText()))
+        {
+            System.out.print("lag gay");
+        }
         MenuForm f=new MenuForm();
         f.setVisible(true);
         this.setVisible(false);
